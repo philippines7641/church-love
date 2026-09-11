@@ -1,0 +1,31 @@
+name: Church Love Daily DB Update
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add up to 100 verified songs
+        run: python scripts/daily_update.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "church-love-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add songs.json update_queue.json
+          if git diff --cached --quiet; then
+            echo "No verified songs waiting."
+          else
+            git commit -m "daily: add up to 100 verified songs"
+            git push
+          fi
