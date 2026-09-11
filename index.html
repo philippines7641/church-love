@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Church Love - 교회 찬송·반주기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Church Love</h1>
+      <p>교회 찬송 · 복음성가</p>
+    </header>
+
+    <section class="search">
+      <label for="number">찬송가 번호</label>
+      <div class="input-row">
+        <input id="number" inputmode="numeric" type="number" placeholder="예: 310">
+        <button id="searchBtn">확인</button>
+      </div>
+      <div id="message" class="message">번호를 입력해 주세요.</div>
+    </section>
+
+    <section id="songInfo" class="song-info hidden">
+      <div id="category"></div>
+      <h2 id="title"></h2>
+    </section>
+
+    <section id="playerBox" class="player hidden">
+      <div class="video-wrap">
+        <iframe id="player" title="찬송 영상"
+          src=""
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="empty" class="empty">
+      먼저 번호를 입력해 주세요.
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
