@@ -1,51 +1,84 @@
-import json, re, subprocess
+import json, subprocess
 from pathlib import Path
 
 DB = Path('songs.json')
 CAND = Path('candidate_queue.json')
 LIMIT = 30
 
-db = json.loads(DB.read_text(encoding='utf-8'))
-candidates = json.loads(CAND.read_text(encoding='utf-8')) if CAND.exists() else {'songs': []}
-existing = {str(x.get('number')) for x in db.get('songs', [])}
-existing |= {str(x.get('number')) for x in candidates.get('songs', [])}
+def load(path, default):
+    if not path.exists():
+        return default
+    return json.loads(path.read_text(encoding='utf-8'))
 
-songs = [x for x in db.get('songs', []) if str(x.get('number')) not in existing]
-# songs.json initially contains all songs, so use entries without a verified video.
-songs = [x for x in db.get('songs', []) if not x.get('verified') and str(x.get('number')) not in {str(y.get('number')) for y in candidates.get('songs', [])}]
+db = load(DB, {'songs': []})
+cand = load(CAND, {'songs': []})
 
-out = candidates.get('songs', [])
+# 곡 번호가 영상 제목에 반드시 들어갈 필요는 없습니다.
+# DB의 제목을 기준으로 YouTube 후보를 찾습니다.
+waiting_titles = {str(x.get('title','')).strip().casefold() for x in cand.get('songs', [])}
+waiting_titles.discard('')
+
+songs = [
+    x for x in db.get('songs', [])
+    if not x.get('verified') and str(x.get('title','')).strip().casefold() not in waiting_titles
+]
+
+out = list(cand.get('songs', []))
+
 for song in songs[:LIMIT]:
-    n = int(song['number'])
-    title = song['title']
-    if not ((1 <= n <= 558) or (1001 <= n <= 2999)):
+    number = song.get('number')
+    title = str(song.get('title','')).strip()
+    if not title:
         continue
-    query = f'"{title}" "통일찬송가 {n}" 반주 가사' if n <= 558 else f'"{title}" 찬송가 반주 가사'
+
+    # 번호가 아니라 '곡 제목'을 중심으로 검색합니다.
+    # 후보 검색어에는 반주/가사/무보컬 계열 표현을 사용하지만
+    # 자동으로 검증 완료 처리하지 않습니다.
+    query = f'"{title}" 반주 가사'
     try:
-        p = subprocess.run(['yt-dlp','--flat-playlist','--dump-single-json',f'ytsearch5:{query}'],capture_output=True,text=True,timeout=45)
+        p = subprocess.run(
+            ['yt-dlp', '--flat-playlist', '--dump-single-json', f'ytsearch8:{query}'],
+            capture_output=True, text=True, timeout=60
+        )
         data = json.loads(p.stdout) if p.stdout else {}
-        entries = data.get('entries', [])
+        entries = data.get('entries') or []
     except Exception:
         entries = []
+
     for e in entries:
         vid = e.get('id')
-        title2 = e.get('title','')
-        if not vid: continue
-        low = title2.lower()
-        # Discovery only. Never mark verified automatically.
-        if any(k in low for k in ['mr','반주','inst','instrumental','가사']):
+        candidate_title = e.get('title','')
+        if not vid:
+            continue
+        low = str(candidate_title).casefold()
+        if any(k in low for k in ['반주', 'instrumental', 'inst', 'mr', '가사', 'lyrics']):
             out.append({
-                'number': n, 'title': title, 'videoUrl': f'https://www.youtube.com/watch?v={vid}',
-                'candidateTitle': title2, 'verified': False, 'vocal': 'unknown',
-                'lyrics': 'unknown', 'embeddable': 'unknown', 'status': '검증 필요'
+                'number': number,
+                'title': title,
+                'videoUrl': f'https://www.youtube.com/watch?v={vid}',
+                'candidateTitle': candidate_title,
+                'verified': False,
+                'vocal': 'unknown',
+                'lyrics': 'unknown',
+                'embeddable': 'unknown',
+                'status': '검증 필요'
             })
             break
 
-# de-duplicate by number, preserve first candidate
-seen=set(); dedup=[]
+# 같은 제목/곡은 후보 하나만 유지합니다. 번호보다 제목을 우선 식별자로 사용합니다.
+seen = set()
+dedup = []
 for x in out:
-    k=str(x['number'])
-    if k not in seen:
-        seen.add(k); dedup.append(x)
-CAND.write_text(json.dumps({'description':'자동 검색 후보. 실제 영상 확인 전에는 절대 songs.json으로 반영하지 않습니다.','songs':dedup},ensure_ascii=False,indent=2),encoding='utf-8')
-print('candidates', len(dedup))
+    key = str(x.get('title','')).strip().casefold()
+    if key and key not in seen:
+        seen.add(key)
+        dedup.append(x)
+
+CAND.write_text(
+    json.dumps({
+        'description': '곡 번호가 영상 제목에 없어도 됩니다. DB의 곡 제목으로 후보를 찾고, 실제 확인 전에는 절대 검증 완료 처리하지 않습니다.',
+        'songs': dedup
+    }, ensure_ascii=False, indent=2),
+    encoding='utf-8'
+)
+print('title-based candidates:', len(dedup))
