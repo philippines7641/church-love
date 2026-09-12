@@ -1,0 +1,4 @@
+{
+  "description": "GitHub Actions가 실제 후보 영상을 찾는 대기열입니다. 후보는 자동으로 songs.json에 들어가지 않습니다. 사람이 실제 영상을 확인하여 verified=true, vocal=none, lyrics=embedded, embeddable=true로 확인한 것만 자동 반영됩니다.",
+  "songs": []
+}
