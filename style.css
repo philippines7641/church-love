@@ -1,69 +1,19 @@
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, "Noto Sans KR", sans-serif;
-  background: #f3f5f7;
-  color: #222;
-}
-.app {
-  width: min(760px, calc(100% - 28px));
-  margin: 35px auto;
-  background: #fff;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 8px 30px rgba(0,0,0,.08);
-}
-header { text-align: center; margin-bottom: 28px; }
-h1 { margin: 0; font-size: 30px; }
-header p { margin: 8px 0 0; color: #666; }
-
-.search label { display:block; font-weight:700; margin-bottom:8px; }
-.input-row { display:flex; gap:8px; }
-input {
-  flex:1;
-  min-width:0;
-  font-size:24px;
-  padding:12px;
-  border:1px solid #ccc;
-  border-radius:10px;
-}
-button {
-  border:0;
-  border-radius:10px;
-  padding:0 24px;
-  font-size:18px;
-  cursor:pointer;
-  background:#222;
-  color:#fff;
-}
-.message { margin-top:10px; color:#777; }
-
-.song-info {
-  margin-top:24px;
-  padding:18px;
-  background:#f7f8fa;
-  border-radius:12px;
-}
-.song-info h2 { margin:7px 0 0; }
-.song-info div { color:#666; }
-
-.player { margin-top:18px; }
-.video-wrap {
-  position:relative;
-  width:100%;
-  aspect-ratio:16 / 9;
-  background:#000;
-  border-radius:12px;
-  overflow:hidden;
-}
-iframe { width:100%; height:100%; border:0; }
-
-.empty { margin-top:24px; text-align:center; color:#888; }
-.hidden { display:none; }
-
-@media (max-width:600px) {
-  .app { margin:15px auto; padding:20px; }
-  h1 { font-size:26px; }
-  .input-row { flex-direction:column; }
-  button { height:48px; }
-}
+body { margin: 0; font-family: Arial, "Noto Sans KR", sans-serif; background: #f5f5f5; color: #222; }
+.container { width: min(760px, calc(100% - 28px)); margin: 40px auto; }
+h1 { margin: 0; text-align: center; }
+.subtitle { text-align: center; color: #666; margin: 8px 0 24px; }
+.search-box { display: flex; gap: 8px; }
+.search-box input { flex: 1; min-width: 0; padding: 13px 14px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
+.search-box button { padding: 0 20px; border: 0; border-radius: 8px; background: #333; color: #fff; cursor: pointer; font-size: 16px; }
+.results { margin-top: 18px; display: grid; gap: 8px; }
+.result-item { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 13px 15px; cursor: pointer; }
+.result-item:hover { background: #f0f0f0; }
+.number { font-weight: 700; margin-right: 10px; }
+.category { color: #777; font-size: 13px; margin-left: 8px; }
+.player { margin-top: 24px; background: #fff; padding: 16px; border-radius: 10px; border: 1px solid #ddd; }
+.player h2 { margin: 0 0 14px; font-size: 20px; }
+.video-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+.video-wrap iframe { width: 100%; height: 100%; border: 0; border-radius: 8px; }
+.notice { color: #777; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #ddd; }
+@media (max-width: 560px) { .container { margin: 24px auto; } .search-box { flex-direction: column; } .search-box button { height: 46px; } }

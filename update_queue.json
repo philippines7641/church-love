@@ -1,4 +1,4 @@
 {
-  "description": "검증 완료된 영상만 넣는다. 하루 최대 100곡 자동 반영.",
+  "description": "검증 완료된 영상만 이 대기열에 넣습니다. vocal=none, lyrics=embedded, embeddable=true, verified=true 조건을 모두 만족해야 자동 반영됩니다.",
   "songs": []
 }

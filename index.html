@@ -3,41 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Church Love - 교회 찬송·반주기</title>
+  <title>Church Love</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
-    <header>
-      <h1>Church Love</h1>
-      <p>사랑의 교회</p>
-    </header>
+  <main class="container">
+    <h1>Church Love</h1>
+    <p class="subtitle">찬송가와 함께하는 예배</p>
 
-    <section class="search">
-      <label for="number">찬송가 번호</label>
-      <div class="input-row">
-        <input id="number" inputmode="numeric" type="number" placeholder="예: 310">
-        <button id="searchBtn">확인</button>
-      </div>
-      <div id="message" class="message">번호를 입력해 주세요.</div>
-    </section>
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="찬송가 제목 또는 번호를 입력해 주세요." autocomplete="off">
+      <button id="searchBtn" type="button">검색</button>
+    </div>
 
-    <section id="songInfo" class="song-info hidden">
-      <div id="category"></div>
-      <h2 id="title"></h2>
-    </section>
-
-    <section id="playerBox" class="player hidden">
-      <div class="video-wrap">
-        <iframe id="player" title="찬송 영상"
-          src=""
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <section id="empty" class="empty">
-      먼저 번호를 입력해 주세요.
+    <section id="results" class="results" aria-live="polite"></section>
+    <section id="player" class="player" hidden>
+      <h2 id="songTitle"></h2>
+      <div id="videoArea"></div>
     </section>
   </main>
   <script src="app.js"></script>
