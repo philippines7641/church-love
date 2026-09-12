@@ -1,4 +1,4 @@
-name: Church Love Daily Verified Update
+name: Church Love Daily Verification Update
 
 on:
   schedule:
@@ -14,17 +14,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Add only verified videos (0 to 100/day)
+      - name: Install YouTube search tool
+        run: python -m pip install --upgrade yt-dlp
+
+      - name: Discover candidates only
+        run: python scripts/discover_candidates.py
+
+      - name: Build verified queue
+        run: python scripts/verify_queue.py
+
+      - name: Add verified songs
         run: python scripts/daily_update.py
 
-      - name: Commit and push if changed
+      - name: Commit and push
         run: |
           git config user.name "church-love-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add songs.json update_queue.json update_log.json
+          git add songs.json update_queue.json candidate_queue.json update_log.json
           if git diff --cached --quiet; then
-            echo "No newly verified songs."
+            echo "No verified songs to add."
           else
-            git commit -m "daily: add verified accompaniment videos"
+            git commit -m "daily: discover and add verified accompaniment videos"
             git push
           fi
