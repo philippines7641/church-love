@@ -1,4 +1,12 @@
 {
-  "description": "실제 영상 검증이 완료된 항목만 기록합니다. verified=true, vocal=none, lyrics=embedded, embeddable=true, videoUrl이 모두 있어야 daily_update.py가 songs.json으로 이동시킵니다.",
+  "description": "실제 영상 검증이 끝난 자료를 여기에 넣습니다. 영상에 Church Love 번호가 표시될 필요는 없습니다. DB의 곡 제목과 영상 제목이 같은 곡이면 Church Love 내부 번호로 연결합니다.",
+  "rules": [
+    "verified=true",
+    "vocal=none",
+    "lyrics=embedded",
+    "embeddable=true",
+    "videoUrl 있음",
+    "title 있음"
+  ],
   "songs": []
 }
