@@ -1,4 +1,324 @@
 {
-  "description": "GitHub Actions가 실제 후보 영상을 찾는 대기열입니다. 후보는 자동으로 songs.json에 들어가지 않습니다. 사람이 실제 영상을 확인하여 verified=true, vocal=none, lyrics=embedded, embeddable=true로 확인한 것만 자동 반영됩니다.",
-  "songs": []
+  "description": "곡 번호가 영상 제목에 없어도 됩니다. DB의 곡 제목으로 후보를 찾고, 실제 확인 전에는 절대 검증 완료 처리하지 않습니다.",
+  "songs": [
+    {
+      "number": "1",
+      "title": "만복의 근원 하나님",
+      "videoUrl": "https://www.youtube.com/watch?v=47T9FFLWtj0",
+      "candidateTitle": "[찬송가 반주] (느리게) 새찬송가 1장(통1장) 만복의 근원 하나님 Praise God From Whom All Blessings Flow",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "2",
+      "title": "성부 성자 성령께",
+      "videoUrl": "https://www.youtube.com/watch?v=wcz0ecrUqsM",
+      "candidateTitle": "[종교음악 반주] 통일찬송가 2장 성부 성자 성령께",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "3",
+      "title": "이 천지간 만물들아",
+      "videoUrl": "https://www.youtube.com/watch?v=il22U0nnWqk",
+      "candidateTitle": "찬송가 5장 이 천지간 만물들아 - 피아노 반주 mr + 가사",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "4",
+      "title": "성부 성자와 성령",
+      "videoUrl": "https://www.youtube.com/watch?v=RjKOIQW4MxY",
+      "candidateTitle": "[새찬송가 4장] 성부 성자와 성령 / 피아노 반주+가사 | Glory be to the Father_Piano+Lyrics",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "5",
+      "title": "주 성부 성자 성령께",
+      "videoUrl": "https://www.youtube.com/watch?v=tnIlgR8N8ME",
+      "candidateTitle": "[찬송가] 5장 주 성부 성자 성령께 | MR | 피아노 오르간 반주",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "6",
+      "title": "찬양 성부 성자 성령",
+      "videoUrl": "https://www.youtube.com/watch?v=kmXU7U55bpI",
+      "candidateTitle": "2장 찬양 성부 성자 성령 - 소프라노(멜로디) 파트 연습_반주 포함",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "7",
+      "title": "구주와 왕이신 우리의 하나님",
+      "videoUrl": "https://www.youtube.com/watch?v=48g75bugf0Q",
+      "candidateTitle": "[찬송가] 7장 구주와 왕이신 우리의 하나님 | MR | 피아노 오르간 반주",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "8",
+      "title": "목소리 높여서",
+      "videoUrl": "https://www.youtube.com/watch?v=woCzfWCyKJM",
+      "candidateTitle": "찬송가 6장 반주/가사 - 목소리 높여서 피아노 MR (통합찬송가 8장)",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "9",
+      "title": "거룩 거룩 거룩",
+      "videoUrl": "https://www.youtube.com/watch?v=jwtF21SJ8bg",
+      "candidateTitle": "[새찬송가 반주] 8장 거룩 거룩 거룩 전능하신 주님 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "10",
+      "title": "거룩하신 하나님",
+      "videoUrl": "https://www.youtube.com/watch?v=OQ0y2K3AnXM",
+      "candidateTitle": "[반주/가사] 거룩하신 하나님 (Give Thanks) l 골디 스튜디오",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "11",
+      "title": "거룩한 주님께",
+      "videoUrl": "https://www.youtube.com/watch?v=yzKBTjeI2ig",
+      "candidateTitle": "[새찬송가 반주] 42장 거룩한 주님께 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "12",
+      "title": "고난받은 주를 보라",
+      "videoUrl": "https://www.youtube.com/watch?v=cVZi2RXwvAM",
+      "candidateTitle": "[찬송가] 찬송가 12장 '고난받은 주를 보라'Look, Ye Saints 피아노 반주 가사포함 (Hymn No.12 piano accompaniment)",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "13",
+      "title": "기뻐하며 경배하세",
+      "videoUrl": "https://www.youtube.com/watch?v=DAL7jA94gYA",
+      "candidateTitle": "[새찬송가 반주] 64장 기뻐하며 경배 하세 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "14",
+      "title": "구세주를 아는 이들",
+      "videoUrl": "https://www.youtube.com/watch?v=GHOoDupQrBA",
+      "candidateTitle": "[찬송가 반주] 26장 구세주를 아는 이들 (한글) | Praise the Savior, ye Who Know Him | 통합찬송가 14장 | 일렉톤 연주 | 나리나리tv",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "15",
+      "title": "내 영혼 이제 깨어서",
+      "videoUrl": "https://www.youtube.com/watch?v=522zxNvOQAQ",
+      "candidateTitle": "내영혼 이제 깨어서 (Piano MR) _15장",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "17",
+      "title": "내가 한 맘으로",
+      "videoUrl": "https://www.youtube.com/watch?v=y_pYcmmy_CA",
+      "candidateTitle": "찬송가 17장 내가 한 맘으로 (MR)",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "18",
+      "title": "내 영혼아 곧 깨어",
+      "videoUrl": "https://www.youtube.com/watch?v=XfLDLrXfVDY",
+      "candidateTitle": "#피아노 반주 #통일찬송가 18장 ( 내 영혼아 곧 깨어/Du, meine seele, singe ) 찬양과 경배 ",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "19",
+      "title": "내 영혼아 찬양하라",
+      "videoUrl": "https://www.youtube.com/watch?v=TB3rbwnjlZ4",
+      "candidateTitle": "[새찬송가 65장] 내 영혼아 찬양하라 / 피아노반주+가사",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "20",
+      "title": "다 감사드리세",
+      "videoUrl": "https://www.youtube.com/watch?v=DOtjlFYgBNQ",
+      "candidateTitle": "[새찬송가 반주] 66장 다 감사드리세 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "21",
+      "title": "다 찬양하여라",
+      "videoUrl": "https://www.youtube.com/watch?v=8Zmj4zyMlzY",
+      "candidateTitle": "[새찬송가 반주] 21장 다 찬양하여라 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "22",
+      "title": "다 함께 주를 경배하세",
+      "videoUrl": "https://www.youtube.com/watch?v=WWUOmOesslM",
+      "candidateTitle": "[새찬송가 반주] 12장 다 함께 주를 경배하세 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "23",
+      "title": "만 입이 내게 있으면",
+      "videoUrl": "https://www.youtube.com/watch?v=vV9i6uPn_Zs",
+      "candidateTitle": "[새찬송가 반주] 23장 만 입이 내게 있으면 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "24",
+      "title": "다 나와 찬송드리세",
+      "videoUrl": "https://www.youtube.com/watch?v=GhLcm4wrEJk",
+      "candidateTitle": "찬송가 131장#주현#다 나와 찬송부르세#찬송가피아노#ccm#가사있는",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "25",
+      "title": "면류관 가지고",
+      "videoUrl": "https://www.youtube.com/watch?v=lFyJBLkfsMU",
+      "candidateTitle": "면류관 가지고 / Crown Him with Many Crowns / 피아노 찬양 / 가사 / 새찬송가 25장",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "26",
+      "title": "만유의 주 앞에",
+      "videoUrl": "https://www.youtube.com/watch?v=kWuMYj9lBuI",
+      "candidateTitle": "[새찬송가 반주] 22장 만유의 주 앞에 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "27",
+      "title": "빛나고 높은 보좌와",
+      "videoUrl": "https://www.youtube.com/watch?v=HYIWu4USbKw",
+      "candidateTitle": "[PPT 악보] 새찬송가 27장 빛나고 높은 보좌와(MR) - 비컴퍼니 연주 채널",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "28",
+      "title": "복의 근원 강림하사",
+      "videoUrl": "https://www.youtube.com/watch?v=hlwj1VJ_7fU",
+      "candidateTitle": "[새찬송가 반주] 28장 복의 근원 강림하사 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "29",
+      "title": "성도여 다함께",
+      "videoUrl": "https://www.youtube.com/watch?v=Utu9PtoxUTA",
+      "candidateTitle": "[새찬송가 반주] 29장 성도여 다 함께 MR",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    },
+    {
+      "number": "30",
+      "title": "영화로신 하나님",
+      "videoUrl": "https://www.youtube.com/watch?v=nukNbjxw-Xg",
+      "candidateTitle": "[새찬송가 16장] 은혜로신 하나님 / 피아노 반주+가사",
+      "verified": false,
+      "vocal": "unknown",
+      "lyrics": "unknown",
+      "embeddable": "unknown",
+      "status": "검증 필요"
+    }
+  ]
 }
