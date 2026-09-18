@@ -3,13 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Church Love</title>
+  <title>Sarang Church</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-image: url('maing1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo-img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <main class="container">
-    <h1>Church Love</h1>
-    <p class="subtitle">찬송가와 함께하는 예배</p>
+    <div class="logo-container">
+      <img src="sarang1.jpg" alt="사랑의교회 Sarang Church" class="logo-img">
+    </div>
 
     <div class="search-box">
       <input id="searchInput" type="text" placeholder="찬송가 제목 또는 번호를 입력해 주세요." autocomplete="off">
@@ -17,7 +37,6 @@
     </div>
 
     <section id="results" class="results" aria-live="polite"></section>
-
     <section id="player" class="player" hidden>
       <h2 id="songTitle"></h2>
       <div id="videoArea"></div>
