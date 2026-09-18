@@ -1,4 +1,16 @@
 {
-  "description": "등록 대기열. 곡 제목이 일치하고 videoUrl이 있으며 영상에 가사/자막이 확인된 항목을 넣습니다. 사람 음성 포함 여부는 조건이 아닙니다. 영상 제목의 번호가 Church Love 번호와 같을 필요도 없습니다.",
-  "songs": []
+  "description": "실제 확인된 영상 대기열. 곡 제목 일치 + YouTube 영상 URL. 사람 음성은 허용. 영상 번호는 Church Love 번호와 같을 필요 없음. 자막/가사는 별도 확인 상태를 기록합니다.",
+  "songs": [
+    {
+      "number": 4,
+      "title": "성부 성자와 성령",
+      "category": "통일찬송가",
+      "videoUrl": "https://www.youtube.com/watch?v=VXPDG15kMQg",
+      "verified": true,
+      "lyrics": "unknown",
+      "embeddable": true,
+      "status": "영상 확인 / 자막 확인 필요",
+      "sourceNote": "악보통 페이지에서 해당 곡의 YouTube 영상 플레이어가 확인됨"
+    }
+  ]
 }
