@@ -11,8 +11,7 @@ db = json.loads(DB.read_text(encoding="utf-8"))
 q = json.loads(QUEUE.read_text(encoding="utf-8"))
 
 existing = {str(x["number"]) for x in db.get("songs", [])}
-add = []
-remain = []
+add, remain = [], []
 
 def valid(x):
     try:
@@ -22,14 +21,16 @@ def valid(x):
 
     in_range = (1 <= n <= 558) or (1001 <= n <= 2999)
 
-    # Human voice is intentionally NOT checked.
-    # Exact video-number matching is intentionally NOT checked.
+    # Human singing voice is allowed.
+    # Exact number in the video title is NOT required.
+    # Do not auto-register until lyrics/subtitles are confirmed.
     return (
         in_range
         and bool(str(x.get("title", "")).strip())
         and bool(str(x.get("videoUrl", "")).strip())
-        and x.get("lyrics") == "embedded"
         and x.get("verified") is True
+        and x.get("lyrics") == "embedded"
+        and x.get("embeddable") is True
     )
 
 for x in q.get("songs", []):
@@ -59,5 +60,4 @@ log.setdefault("updates", []).append({
     "added": len(add)
 })
 LOG.write_text(json.dumps(log, ensure_ascii=False, indent=2), encoding="utf-8")
-
 print("added:", len(add))
