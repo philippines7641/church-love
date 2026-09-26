@@ -1,5 +1,15 @@
-YOUTUBE_API_KEY Secret이 등록되어 있어야 합니다.
-매일 한국시간 오전 9시에 최대 100개의 빈 videoUrl을 YouTube에서 검색합니다.
-발견된 첫 영상 URL을 songs.json에 기록하고 GitHub에 자동 commit/push합니다.
-사람 음성/자막은 필터링하지 않습니다.
-Actions에서 workflow_dispatch로 수동 실행할 수 있습니다.
+Church Love 자동 YouTube 업데이트
+
+1. GitHub Secrets에 YOUTUBE_API_KEY가 있어야 합니다.
+2. 매일 한국시간 오전 9시에 GitHub Actions가 실행됩니다.
+3. videoUrl이 비어 있는 곡을 하루 최대 100곡씩 처리합니다.
+4. 검색 순서는 '곡 제목 + 반주 + 가사' → '분류 + 번호 + 반주 + 가사' → '분류 + 번호'입니다.
+5. YouTube 검색 결과에서 번호, 분류, 반주/가사 관련 단어를 기준으로 후보를 고릅니다.
+6. 사람 음성 포함 여부는 제외 조건으로 사용하지 않습니다.
+7. YouTube 임베드 가능 영상만 검색 대상으로 합니다.
+8. 새찬송가는 제외하고 통일찬송가 1~558, 복음성가 1001~2999만 처리합니다.
+9. 발견된 영상은 songs.json에 기록되고 변경 사항이 자동 commit/push됩니다.
+10. GitHub Actions의 workflow_dispatch로 수동 실행할 수도 있습니다.
+
+주의:
+이 방식은 YouTube 검색 결과를 자동으로 연결하는 방식입니다. 영상의 실제 가사 정확성이나 반주 품질을 사람이 최종 확인하는 기능은 아닙니다.
